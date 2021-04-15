@@ -45,9 +45,9 @@ def do_deploy(archive_path):
         return False
     if put(archive_path, "/tmp/").failed:
         return False
-    if run("sudo rm -rf /data/web_static/releases/{}/"
+    '''if run("sudo rm -rf /data/web_static/releases/{}/"
            .format(filename)).failed:
-        return False
+        return False'''
     if run("sudo mkdir -p /data/web_static/releases/{}/"
            .format(filename)).failed:
         return False
@@ -68,5 +68,5 @@ def do_deploy(archive_path):
     if run('sudo ln -s /data/web_static/releases/{}/ /data/web_static/current'
            .format(filename)).failed:
         return False
-    print('New version deployed!')
+
     return True
