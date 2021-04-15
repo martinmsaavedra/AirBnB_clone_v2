@@ -5,7 +5,7 @@ sudo apt-get install -y nginx
 sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
 echo "Hello" > /data/web_static/releases/test/index.html
-ln -fs /data/web_static/releases/test/ /data/web_static/current
+sudo ln -fs /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu /data
 chgrp -R ubuntu /data/
 printf %s "server {
