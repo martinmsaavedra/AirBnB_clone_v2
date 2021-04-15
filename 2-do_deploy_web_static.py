@@ -15,19 +15,16 @@ def do_deploy(archive_path):
         return False
     try:
         put(archive_path, "/tmp/")
-        '''if run("sudo rm -rf /data/web_static/releases/{}/"
-           .format(filename)).failed:
-        return False'''
-        run("sudo mkdir -p /data/web_static/releases/{}/".format(filename))
-        run('sudo tar -zxf /tmp/{} -C /data/web_static/releases/{}/'
+        run("mkdir -p /data/web_static/releases/{}/".format(filename))
+        run('tar -zxf /tmp/{} -C /data/web_static/releases/{}/'
             .format(filename + ".tgz", filename))
-        run('sudo rm /tmp/{}'.format(filename + '.tgz'))
-        run('sudo mv /data/web_static/releases/{}/web_static/* '
+        run('rm /tmp/{}'.format(filename + '.tgz'))
+        run('mv /data/web_static/releases/{}/web_static/* '
             ' /data/web_static/releases/{}/'.format(filename, filename))
-        run('sudo rm -rf /data/web_static/releases/{}/web_static'
+        run('rm -rf /data/web_static/releases/{}/web_static'
             .format(filename))
-        run('sudo rm -rf /data/web_static/current')
-        run('sudo ln -s /data/web_static/releases/{}/ /data/web_static/current'
+        run('rm -rf /data/web_static/current')
+        run('ln -s /data/web_static/releases/{}/ /data/web_static/current'
             .format(filename))
         return True
     except:
