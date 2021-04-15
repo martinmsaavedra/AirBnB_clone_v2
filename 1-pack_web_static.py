@@ -9,7 +9,7 @@ def do_pack():
     '''Create a tarball file of web static'''
     fecha = datetime.datetime.now().isoformat()
     fecha = fecha[:-7].replace(":", "").replace(
-        ".","").replace("T", "").replace("-", "")
+        ".", "").replace("T", "").replace("-", "")
     filename = "versions/web_static_" + fecha + ".tgz"
     if not path.exists('versions'):
         if local("mkdir -p versions").failed:
