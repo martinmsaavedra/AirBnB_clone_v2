@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 # sets up your web servers for the deployment of web_static.
+sudo apt-get update -y
 sudo apt-get install -y nginx
 sudo mkdir -p /data/web_static/releases/test/
+sudo mkdir -p /data/web_static/shared/
 echo "Hello" > /data/web_static/releases/test/index.html
 ln -fs /data/web_static/releases/test/ /data/web_static/current
-chown -R ubuntu:ubuntu /data
-chgrp -R ubuntu:ubuntu /data/
+chown -R ubuntu /data
+chgrp -R ubuntu /data/
 printf %s "server {
     listen 80;
     listen [::]:80 default_server;
