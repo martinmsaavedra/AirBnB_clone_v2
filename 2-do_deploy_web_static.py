@@ -11,7 +11,7 @@ def do_deploy(archive_path):
     using the function do_deploy'''
     filename = archive_path[9:-4]
 
-    if not path.exists(archive_path):
+    if not path.isfile(archive_path):
         return False
     if put(archive_path, "/tmp/").failed:
         return False
