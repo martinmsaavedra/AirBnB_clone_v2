@@ -12,12 +12,8 @@ def do_pack():
         ".","").replace("T", "").replace("-", "")
     filename = "versions/web_static_" + fecha + ".tgz"
     if not path.exists('versions'):
-        try:
-            local("mkdir -p versions")
-        except Exception:
+        if local("mkdir -p versions").failed:
             return None
-    try:
-        local("tar -czvf {} web_static".format(filename))
-    except:
+    if local("tar -czvf {} web_static".format(filename)).failed:
         return None
     return filename
