@@ -27,11 +27,11 @@ def do_pack():
     if not path.exists('versions'):
         try:
             local("mkdir -p versions")
-        except Exception:
+        except:
             return None
     try:
         local("tar -czvf {} web_static".format(filename))
-    except Exception:
+    except:
         return None
     return filename
 
