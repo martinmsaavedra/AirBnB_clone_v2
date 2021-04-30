@@ -70,3 +70,8 @@ class DBStorage():
                                        expire_on_commit=False)
         Session = scoped_session(Session_factory)
         self.__session = Session()
+
+    def close(self):
+        """call method on the private session"""
+        self.__session.close()
+
