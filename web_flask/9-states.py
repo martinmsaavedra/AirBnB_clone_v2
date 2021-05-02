@@ -10,12 +10,11 @@ app = Flask(__name__)
 
 @app.route('/states', strict_slashes=False)
 @app.route("/states/<id>", strict_slashes=False)
-def states_id(id):
+def states_id(id=None):
     """Displays an HTML page with info about <id>, if it exists."""
-    for state in storage.all("State").values():
-        if state.id == id:
-            return render_template("9-states.html", state=state)
-    return render_template("9-states.html")
+    states = storage.all("State")
+    key = "{}.{}".format('State', id)
+    return render_template("9-states.html", states=states, key=key, id=id)    
 
 
 @app.teardown_appcontext
