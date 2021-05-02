@@ -9,12 +9,6 @@ app = Flask(__name__)
 
 
 @app.route('/states', strict_slashes=False)
-def cities_by_states():
-    """display all cities"""
-    states = storage.all("State")
-    return render_template("9-states.html", states=states)
-
-
 @app.route("/states/<id>", strict_slashes=False)
 def states_id(id):
     """Displays an HTML page with info about <id>, if it exists."""
