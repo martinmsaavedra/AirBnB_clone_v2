@@ -48,5 +48,16 @@ def num_temp_func(n):
         abort(404)
 
 
+@app.route('/number_odd_or_even/<n>', strict_slashes=False)
+def num_odd_even(n):
+    '''when odd or even'''
+    try:
+        number = int(n)
+        return render_template('6-number_odd_or_even.html', number=number)
+    except:
+        abort(404)
+
+
 if __name__ == "__main__":
     app.run()
+    
