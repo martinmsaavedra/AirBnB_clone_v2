@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if id != NULL %}
+    {% if states.has_key(id) == TRUE %}
+    {% state = states[id] %}
+    <H1>States: {{state.name}} </H1>
+    <H3>Cities: </H3>
+        {% for city in state.cities|sort(attribute="name") %}
+        <UL>
+            <LI>{{ city.id }}: <B>{{ city.name }}</B></LI>
+        {% endfor %}
+        <UL>
+    {% elif states.has_key(id) == FALSE %}
+        <H1>Not found!</H1>
+    {% endif %}
+    {% else %}
+    {% for state in states.values()|sort(attribute="name") %}
+    <UL>
+        <LI>{{ state.id }}: <B>{{ state.name }}</B> </LI>
+    {% endfor %}
+    {% endif %}
+    </UL>
+</body>
+</html>
